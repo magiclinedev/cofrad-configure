@@ -1,0 +1,2 @@
+# cofrad-configure
+Customize Mannequin
