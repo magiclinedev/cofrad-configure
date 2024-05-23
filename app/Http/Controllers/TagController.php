@@ -39,11 +39,20 @@ class TagController extends Controller
     // PARENT TAG
     public function tagsByType()
     {
-        $tagsByType = Tags::select('tag', DB::raw('group_concat(id) as ids, group_concat(name) as names, group_concat(image) as images'))
+        $tagsByTypeE = Tags::select('tag', DB::raw('group_concat(id) as ids, group_concat(name) as names, group_concat(image) as images'))
             ->whereIn('tag', ['Gender', 'Finish', 'Arms'])
             ->groupBy('tag')
             ->get();
-        return response()->json($tagsByType);
+
+        // Define the desired order of tags
+        $tagOrder = ['Gender', 'Finish', 'Arms'];
+
+        // Sort $tagsByType based on $tagOrder
+        $TagsByType = collect($tagOrder)->map(function ($tag) use ($tagsByTypeE) {
+            return $tagsByTypeE->where('tag', $tag)->first();
+        });
+
+        return response()->json($TagsByType);
     }
 
     // CHILDREN TAG

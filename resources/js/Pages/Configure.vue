@@ -103,8 +103,6 @@
     const headZoom = ref(false); // Track the zoom state for the head
     const armsZoom = ref(false); // Track the zoom state for the ARMS
 
-    const showModal = ref(false);
-
     const fetchTagsByType = async () => {
         try {
             const response = await axios.get('/tags-by-type');
@@ -204,10 +202,22 @@
         // MODAL
         if (selectedTags.value['Finish'] === 'Fabric') {
             if(selectedTags.value['Head'] === 'EVE'){
-                showModal.value = true; // Show the modal
                 showDropdown.value = null; // Hide the dropdown
                 outZoom.value = true; // Set outZoom to true for zoom-out effect
             }
+        }
+        //GENDER FILTERS
+        if (selectedTags.value['Gender'] === 'Male' && selectedTags.value['Head'] === 'EVE') {
+            selectedTags.value['Head'] = 'ZAC';
+        }
+        if (selectedTags.value['Gender'] === 'Male' && selectedTags.value['Pose'] === 'Elle 6') {
+            selectedTags.value['Pose'] = 'DRV 17';
+        }
+        if (selectedTags.value['Gender'] === 'Female' && selectedTags.value['Head'] === 'ZAC') {
+            selectedTags.value['Head'] = 'EVE';
+        }
+        if (selectedTags.value['Gender'] === 'Female' && selectedTags.value['Pose'] === 'DRV 17') {
+            selectedTags.value['Pose'] = 'Elle 6';
         }
         // FABRIC FILTERS
         if (selectedTags.value['Finish'] === 'Fabric' && selectedTags.value['Head'] === 'EVE') {
@@ -226,7 +236,6 @@
         else if (tagType === 'Arms') {
             armsZoom.value = true; // Zoom in on the arms when 'Arms' tag is selected
             if (selectedTags.value['Finish'] === 'Fabric'){
-                showModal.value = true;
                 showDropdown.value = null;
                 outZoom.value = true;
             }

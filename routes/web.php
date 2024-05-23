@@ -22,7 +22,7 @@ Route::get('login', function () {
     return Inertia::render('Auth/Login');
 })->name('login');
 
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 // Authenticated routes
@@ -41,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
         return Inertia::render('Admin/Model');
     });
     Route::get('/models-index', [ModelController::class, 'index'])->name('models.index');
-    Route::post('/add-model', [ModelController::class, 'store'])->name('add.tag');
+    Route::post('/add-model', [ModelController::class, 'store'])->name('add.model');
 });
 
 Route::get('/', function () {
