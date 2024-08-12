@@ -195,6 +195,14 @@
 
     // Update selectedFinishTagId when a parent tag is selected
     const selectTag = async (tagType, tag) => {
+        // elle pose to drv
+        const femalePosesToChange = ['Elle 1', 'Elle 2', 'Elle 3', 'Elle 4', 'Elle 5', 'Elle 6', 'Elle 7',
+        'Elle 8', 'Elle 9', 'Elle 10', 'Elle 11', 'Elle 12', 'Elle 13', 'Elle 14', 'Elle 15', 'Elle 20',
+        'Elle 21', 'Elle 22', 'Elle 23', 'Elle 24', 'Elle 25', 'Elle 26'];
+
+        const malePosesToChange = ['DRV 1', 'DRV 2', 'DRV 3', 'DRV 4', 'DRV 5', 'DRV 6', 'DRV 7',
+        'DRV 8', 'DRV 9', 'DRV 10', 'DRV 11', 'DRV 12', 'DRV 13', 'DRV 16', 'DRV 17'];
+
         const tagId = tagsByType.value.find(t => t.tag === tagType)?.tags.find(t => t.tag === tag)?.id;
         selectedTags.value[tagType] = tag;
         selectedTagId.value = tagId; // Set the selected tag's ID
@@ -210,13 +218,15 @@
         if (selectedTags.value['Gender'] === 'Male' && selectedTags.value['Head'] === 'EVE') {
             selectedTags.value['Head'] = 'ZAC';
         }
-        if (selectedTags.value['Gender'] === 'Male' && selectedTags.value['Pose'] === 'Elle 6') {
+        if (selectedTags.value['Gender'] === 'Male' && femalePosesToChange.includes(selectedTags.value['Pose'])) {
+            console.log('Pose changed to DRV 17');
             selectedTags.value['Pose'] = 'DRV 17';
         }
         if (selectedTags.value['Gender'] === 'Female' && selectedTags.value['Head'] === 'ZAC') {
             selectedTags.value['Head'] = 'EVE';
         }
-        if (selectedTags.value['Gender'] === 'Female' && selectedTags.value['Pose'] === 'DRV 17') {
+        if (selectedTags.value['Gender'] === 'Female' && malePosesToChange.includes(selectedTags.value['Pose'])) {
+            console.log('Pose changed to Elle 6');
             selectedTags.value['Pose'] = 'Elle 6';
         }
         // FABRIC FILTERS

@@ -31,6 +31,7 @@ class ModelController extends Controller
         $model->name = $validatedData['name'];
         $model->tags = $validatedData['tags'];
         $model->status = "1";
+        $model->background_color = "1";
         $imagePath = $request->file('image')->storeAs('public/images/models', $request->file('image')->hashName());
         $model->images = str_replace('public/', '', $imagePath); // Adjust the path for storage in the database
 
