@@ -2,10 +2,10 @@
     <div>
         <Navbar />
         <h1 class="text-6xl">MODELS</h1>
-        <div class="flex">
-            <div class="w-1/2 pr-8">
+        <div class="flex h-[calc(90vh-4rem)]">
+            <div class="w-1/2 pr-8 overflow-y-auto h-full max-h-screen">
                 <!-- Table showing all MODELS -->
-                <table class="w-full border-collapse border border-gray-300">
+                <table class="w-full border-collapse border border-grey-300 overflow-y-scroll">
                     <thead>
                         <tr>
                         <th class="border border-gray-300 px-4 py-2">Name</th>

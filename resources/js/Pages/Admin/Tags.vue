@@ -2,8 +2,8 @@
     <div>
         <Navbar />
         <h1 class="text-6xl">TAGS</h1>
-        <div class="flex">
-            <div class="w-1/2 pr-8">
+        <div class="flex h-[calc(90vh-4rem)]">
+            <div class="w-1/2 pr-8 overflow-y-auto h-full max-h-screen">
                 <!-- Table showing all tags -->
                 <table class="w-full border-collapse border border-gray-300">
                     <thead>
